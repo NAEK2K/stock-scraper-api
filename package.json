@@ -1,0 +1,23 @@
+{
+  "name": "stock-scraper-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "stock.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naek2k/stock-scraper-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naek2k/stock-scraper-api/issues"
+  },
+  "homepage": "https://github.com/naek2k/stock-scraper-api#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "got": "^11.1.4"
+  }
+}
