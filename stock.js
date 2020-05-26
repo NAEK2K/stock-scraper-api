@@ -1,6 +1,8 @@
 const got = require('got');
 const cheerio = require('cheerio');
 
+const path = require('path');
+
 const express = require('express');
 const app = express();
 const port = 8080
@@ -25,7 +27,9 @@ const scrape = (async (ticker) => {
     };
 });
 
-
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'))
+})
 
 app.get('/ticker/:ticker', (req, res) => {
     scrape(req.params.ticker).then((results) => {

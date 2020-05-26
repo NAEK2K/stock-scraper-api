@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <title>Stock Scraper</title>
+</head>
+
+<body>
+    <p>Ticker: <input type="text" name="ticker" id="ticker"></p>
+    <button onclick="getData()">Submit</button>
+    <p id="stockTicker">Ticker: N/A</p>
+    <p id="stockValue">Value: N/A</p>
+    <p id="stockChange">Change: N/A</p>
+    <script>
+        function getData() {
+            let ticker = $('#ticker').val()
+            $.get(`/ticker/${ticker}`, (data, textStatus, jqXHR) => {
+                if(!data.value) {
+                    alert('ERROR: That ticker could not be found.')
+                    return
+                }
+                $('#stockTicker').text(`Ticker: ${data.ticker}`);
+                $('#stockValue').text(`Value: \$${data.value}`);
+                $('#stockChange').text(`Change: \$${data.changeValue} (${data.changePercent}%)`);
+                if(data.positiveChange) {
+                    $('#stockChange').addClass('positive')
+                } else {
+                    $('#stockChange').addClass('negative')
+                }
+            })
+        }
+    </script>
+    <style>
+        .positive {
+            color: green;
+        }
+        .negative {
+            color: red;
+        }
+    </style>
+</body>
+
+</html>
